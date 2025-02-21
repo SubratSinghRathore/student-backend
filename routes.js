@@ -1,6 +1,6 @@
 const Router = require("express");
 const router = Router();
-const { login, Main, login_update, message, status } = require("./mongo.js");
+const { login } = require("./mongo.js");
 router.use(Router.urlencoded({ extended: true }));
 router.use(Router.json());
 
@@ -9,19 +9,21 @@ router.get("/", (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+    const mail = req.body.email;
+    const password = req.body.pass;
     try {
         const Login = await login.findOne({
-            username,
-            password
+            db_mail,
+            db_pass
         });
         if (Login == null) {
             res.status(400).send("invalid credentials");
         }
-        else if (username == Login.username && Login.password == password) {
+        else if (mail == Login.db_mail && Login.password == db_pass) {
             const link_url = Login.url;
-            res.status(200).redirect(link_url);
+            res.status(200).json({
+                msg: "user created"
+            });
         }
         else {
             res.send("Something Went Wrong!")

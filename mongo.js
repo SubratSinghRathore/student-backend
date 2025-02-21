@@ -5,8 +5,9 @@ mongoose
 .then(console.log("mongo_db connected"));
 
 const login_schema = new mongoose.Schema({
-    username: String,
-    password: String
+    mail: String,
+    pass: String,
+    
 });
 
 
