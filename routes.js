@@ -37,7 +37,7 @@ router.post('/register', async (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const pass = req.body.pass;
-    
+
     if (!name) {
         res.status(400).send("Invalid Credentials");
     }
@@ -55,7 +55,7 @@ router.post('/register', async (req, res) => {
                 pass
             });
             new_user.save();
-            res.status(200).send("User Created Sucessfully Please Login With Your Credentials");
+            res.status(200).redirect("https://student-learning-platform-1uoa.vercel.app/");
         }
         catch (error) {
             res.status(400).redirect("https://student-learning-platform-1uoa.vercel.app/");

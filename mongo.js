@@ -13,7 +13,7 @@ const login_schema = new mongoose.Schema({
 
 const reg_schema = new mongoose.Schema({
     name: String,
-    mail: String,
+    email: String,
     pass: String,
     
 });
