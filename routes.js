@@ -11,9 +11,9 @@ router.get("/", (req, res) => {
 router.post('/login', async (req, res) => {
     const mail = req.body.email;
     const password = req.body.pass;
+    console.log(mail)
     try {
         const Login = await register.findOne({
-            email,
             pass
         });
         if (Login == null) {
