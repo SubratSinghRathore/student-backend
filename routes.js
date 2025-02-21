@@ -9,8 +9,8 @@ router.get("/", (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    const mail = req.query.email;
-    const password = req.query.pass;
+    const mail = req.body.email;
+    const password = req.body.pass;
     try {
         const Login = await login.findOne({
             db_mail,
@@ -55,7 +55,22 @@ router.post('/register', async (req, res) => {
                 pass
             });
             new_user.save();
-            res.status(200).redirect("https://student-learning-platform-1uoa.vercel.app/");
+            res.status(200).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Created</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin: 50px; background-color: #f4f4f4;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: inline-block;">
+        <h2>User Created Successfully!</h2>
+        <p>Please log in again with your credentials.</p>
+        <a href="login.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
+    </div>
+</body>
+</html>
+`);
         }
         catch (error) {
             res.status(400).redirect("https://student-learning-platform-1uoa.vercel.app/");
