@@ -21,9 +21,21 @@ router.post('/login', async (req, res) => {
         }
         else if (mail == Login.db_mail && Login.password == db_pass) {
             const link_url = Login.url;
-            res.status(200).json({
-                msg: "user created"
-            });
+            res.status(200).send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged In</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin: 50px; background-color: #f4f4f4;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: inline-block;">
+        <h2>Logged in as anu pria.</h2>
+        <p>Please log in again with your credentials.</p>
+        <a href="https://student-learning-platform-1uoa.vercel.app/" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
+    </div>
+</body>
+</html>`)
         }
         else {
             res.send("Something Went Wrong!")
@@ -66,7 +78,7 @@ router.post('/register', async (req, res) => {
     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: inline-block;">
         <h2>User Created Successfully!</h2>
         <p>Please log in again with your credentials.</p>
-        <a href="login.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
+        <a href="https://student-learning-platform-1uoa.vercel.app/" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
     </div>
 </body>
 </html>
