@@ -100,7 +100,7 @@ router.post('/register', async (req, res) => {
     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: inline-block;">
         <h2>User Created Successfully!</h2>
         <p>Please log in again with your credentials.</p>
-        <a href="https://student-learning-platform-1uoa.vercel.app/" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
+        <a href="https://mid-frontend-delta.vercel.app/index.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
     </div>
 </body>
 </html>
