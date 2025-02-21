@@ -1,6 +1,6 @@
 const Router = require("express");
 const router = Router();
-const { login } = require("./mongo.js");
+const { login, register } = require("./mongo.js");
 router.use(Router.urlencoded({ extended: true }));
 router.use(Router.json());
 
@@ -9,8 +9,8 @@ router.get("/", (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    const mail = req.body.email;
-    const password = req.body.pass;
+    const mail = req.query.email;
+    const password = req.query.pass;
     try {
         const Login = await login.findOne({
             db_mail,
@@ -33,20 +33,26 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/signup', async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    if (!username) {
+router.post('/register', async (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const pass = req.body.pass;
+    
+    if (!name) {
         res.status(400).send("Invalid Credentials");
     }
-    else if (!password) {
+    else if (!email) {
+        res.status(400).send("Invalid Credentials")
+    }
+    else if (!pass) {
         res.status(400).send("Invalid Credentials")
     }
     else {
         try {
-            const new_user = await login.create({
-                username,
-                password
+            const new_user = await register.create({
+                name,
+                email,
+                pass
             });
             new_user.save();
             res.status(200).send("User Created Sucessfully Please Login With Your Credentials");

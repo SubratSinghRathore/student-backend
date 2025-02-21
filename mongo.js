@@ -11,9 +11,19 @@ const login_schema = new mongoose.Schema({
 });
 
 
+const reg_schema = new mongoose.Schema({
+    name: String,
+    mail: String,
+    pass: String,
+    
+});
+
+
 
 const login = mongoose.model('login', login_schema)
+const register = mongoose.model('register', reg_schema)
 
 module.exports = {
     login,
+    register
 }
