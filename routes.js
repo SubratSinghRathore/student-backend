@@ -54,7 +54,7 @@ router.get('/login', async (req, res) => {
             return res.status(400).send("Invalid credentials");
         }
 
-        if (user.pass === password) { // Use bcrypt.compareSync(password, user.pass) if hashed passwords are used
+        if (user.pass == password) { // Use bcrypt.compareSync(password, user.pass) if hashed passwords are used
             
             return res.status(200).json({username: user.name});
         } else {
@@ -100,7 +100,7 @@ router.post('/register', async (req, res) => {
     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); display: inline-block;">
         <h2>User Created Successfully!</h2>
         <p>Please log in again with your credentials.</p>
-        <a href="https://mid-frontend-delta.vercel.app/index.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
+        <a href="https://mid-frontend-delta.vercel.app/login.html" style="display: inline-block; margin-top: 20px; padding: 10px 20px; font-size: 16px; color: white; background: #007BFF; text-decoration: none; border-radius: 5px;">Go to Login</a>
     </div>
 </body>
 </html>
